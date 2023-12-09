@@ -13,6 +13,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 
+import org.w3c.dom.Node;
+
 public class AStarSolver extends Solver
 {
 	/*
@@ -113,31 +115,24 @@ public class AStarSolver extends Solver
                                 //checking if we have found the solution
 				if(currState.getCol() == this.maze.getEnd().getCol() && currState.getLine() == this.maze.getEnd().getLine())
 				{
-					//You should create a new Node<T> for this maze to be able to assign a new father to it
-					//Set current as father (parent) for all next states
-					//add the goal (end) so you can reach starting point by using fathers (parents)
+					((PriorityQueue<Node<Maze>>) this.frontier).add(current);
 					endfound = true;
 				}
 				else
 				{
-					LinkedList<Node<Maze>> nexts = this.getNextSquares(); //Get next possible states
-                                        
-                                        //now the current one was visited (that you want to explore its next states)
-                                        //So it should be added to other queue (which keeps track the visited ones)
-                                        //do not forget to check if it is already in
-                                        //do not forget to set * for the visited one (current one) (is it gonna be the Node or Square?)
-                                                
-                                        //You may want to use an iterator to reach every possible next state one by one 
-                                        //or you may want to get size of the next possible states and reach them accordingly
-                                                
-                                        //Add next possible states to the queue 
-                                        //(think about which queue it could be.)
-                                        //Do not forget to add all next possible states (at most they are: n e s w)
-                                        //-> to be able to have n e s w, you should iterate it from start to end and add it like that
-                                        //Do not forget to set father (parent) node of the added ones before adding (as current node)
-                                        //Do not forget to increment nodesCounter
+					LinkedList<Node<Maze>> nexts = this.getNextSquares(); 						
 
-                                        //You may need typecasting for the PriorityQueue (before adding) as can be observed from given codes
+					Iterator<Node<Maze>> nextsIterator = nexts.iterator();						
+
+					if(!(((PriorityQueue<Square>) this.closedSquares).contains(currState))){			
+						while (nextsIterator.hasNext()){							
+							Node<Maze> nextNode = nextsIterator.next();					
+							nextNode.setFather(current); 							
+							((PriorityQueue<Node<Maze>>) this.frontier).add(nextNode);			
+							nodesCounter++;
+						}
+						((PriorityQueue<Square>)this.closedSquares).add(currState); 				
+					}
 				}
 			}
 		}
