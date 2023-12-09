@@ -3,10 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-/**
- *
- * @author 4hm3t
- */
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;

@@ -3,10 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-/**
- *
- * @author 4hm3t
- */
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

@@ -3,17 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-/**
- *
- * @author 4hm3t
- */
 import java.util.AbstractCollection;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
-
-import org.w3c.dom.Node;
 
 public class AStarSolver extends Solver
 {
